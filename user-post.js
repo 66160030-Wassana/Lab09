@@ -1,18 +1,18 @@
 document.addEventListener("DOMContentLoaded", async () => {
-    const postList = document.getElementById("post-list");
+    const postsList = document.getElementById("posts-list");
     const params = new URLSearchParams(window.location.search);
     const userId = params.get("id");
 
     if (!userId) {
-        postList.innerHTML = "<p>ไม่พบข้อมูลโพสต์</p>";
+        postsList.innerHTML = "<p>ไม่พบข้อมูลโพสต์</p>";
         return;
     }
 
     try {
-        const response = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}/post`);
-        const post = await response.json();
+        const response = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}/posts`);
+        const posts = await response.json();
 
-        post.forEach(post => {
+        posts.forEach(post => {
             const postElement = document.createElement("div");
             postElement.classList.add("post-item");
             postElement.innerHTML = `
@@ -21,11 +21,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                 <button onclick="toggleComments(${post.id}, this)">ดูความคิดเห็น</button>
                 <div id="comments-${post.id}" class="comments" style="display: none;"></div>
             `;
-            postList.appendChild(postElement);
+            postsList.appendChild(postElement);
         });
     } catch (error) {
         console.error("Error fetching posts:", error);
-        postList.innerHTML = "<p>เกิดข้อผิดพลาดในการโหลดโพสต์</p>";
+        postsList.innerHTML = "<p>เกิดข้อผิดพลาดในการโหลดโพสต์</p>";
     }
 });
 
