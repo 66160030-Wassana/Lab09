@@ -1,0 +1,19 @@
+.container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  .user-list, .user-detail, .posts-list {
+    margin-top: 20px;
+  }
+  .user-item, .post-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  .back-button {
+    display: inline-block;
+    margin-bottom: 20px;
+    text-decoration: none;
+    color: #333;
+  }
